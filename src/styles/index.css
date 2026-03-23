@@ -1,3 +1,4 @@
+/* Base */
 body {
   font-family: var(--bs-font-sans-serif);
   background-color: var(--t-color-base-200);
@@ -9,6 +10,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--bs-font-serif);
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Header */
 header {
   position: sticky;
   top: 0;
@@ -19,6 +25,7 @@ header.scrolled .navbar {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Navbar */
 .navbar {
   background-color: var(--t-color-base-200) !important;
   border-bottom: 2px solid var(--t-color-base-300);
@@ -26,7 +33,6 @@ header.scrolled .navbar {
   transition: box-shadow 0.3s ease;
 }
 
-/* Inner container — logo left, links right */
 .nav-container {
   width: 100%;
   max-width: var(--t-maxwidth);
@@ -37,7 +43,7 @@ header.scrolled .navbar {
   gap: 1rem;
 }
 
-/*  Logo  */
+/* Logo box */
 .navbar-brand {
   display: inline-flex;
   align-items: center;
@@ -59,21 +65,18 @@ header.scrolled .navbar {
   color: var(--t-color-base-100) !important;
 }
 
+/* Show logo image, hide fallback text */
 .navbar-logo {
   height: 1.5em;
   width: auto;
-  display: none; 
+  display: block;
 }
 
 .navbar-logo-fallback {
-  display: inline;
+  display: none;
 }
 
-/* logo */
-.navbar-logo { display: block; }
-.navbar-logo-fallback { display: none; }
-
-/* Nav links list */
+/* Nav links */
 .nav-links-list {
   display: flex;
   flex-direction: row;
@@ -85,7 +88,6 @@ header.scrolled .navbar {
   margin-left: auto;
 }
 
-/* Individual nav link */
 .nav-links-list .nav-item .nav-link {
   display: inline-block;
   padding: 0.3rem 0.875rem !important;
@@ -102,15 +104,13 @@ header.scrolled .navbar {
   position: static;
 }
 
-.nav-links-list .nav-item .nav-link::after {
-  display: none !important;
-}
-
+/* Remove Bootstrap underline decorations */
+.nav-links-list .nav-item .nav-link::after,
 .nav-links-list .nav-item .nav-link::before {
   display: none !important;
 }
 
-/* Active state  */
+/* Active link - filled dark */
 .nav-links-list .nav-item .nav-link.active {
   background-color: var(--t-color-base-content) !important;
   border-color: var(--t-color-base-content) !important;
@@ -118,14 +118,14 @@ header.scrolled .navbar {
   font-weight: 600;
 }
 
-/* Hover on non-active links */
+/* Hover on inactive links */
 .nav-links-list .nav-item .nav-link:not(.active):hover {
   background-color: var(--t-color-base-300);
   border-color: var(--t-color-base-content);
   color: var(--t-color-base-content) !important;
 }
 
-/* ── Mobile collapse ── */
+/* Mobile nav */
 @media (max-width: 991px) {
   .nav-links-list {
     flex-direction: column;
@@ -145,65 +145,14 @@ header.scrolled .navbar {
   }
 }
 
-.footer-link--social { margin-top: 0.5rem; }
-
-/* ── Footer social icons ── */
-.footer-socials {
-  display: flex;
-  gap: 0.625rem;
-  margin-top: 1rem;
-}
-
-.footer-social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border: 1.5px solid oklch(35% 0.04 123.72);
-  color: oklch(70% 0.01 123.72);
-  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
-  flex-shrink: 0;
-}
-
-.footer-social-link svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-.footer-social-link:hover {
-  border-color: var(--t-color-secondary);
-  color: var(--t-color-secondary);
-  background-color: oklch(25% 0.04 123.72);
-}
-
-/* CSS Variables */
-:root {
-  --t-color-base-100: oklch(98.71% 0.02 123.72);
-  --t-color-base-200: oklch(91.8% 0.018 123.72);
-  --t-color-base-300: oklch(84.89% 0.017 123.72);
-  --t-color-dark:     oklch(19.742% 0.004 123.72);
-  --t-color-light:    oklch(98.71% 0.02 123.72);
-  --t-color-base-content: oklch(19.742% 0.004 123.72);
-  --t-color-primary:  oklch(58.92% 0.199 134.6);
-  --t-color-primary-content: oklch(11.784% 0.039 134.6);
-  --t-color-secondary: oklch(77.75% 0.196 111.09);
-  --t-color-neutral:  oklch(30.98% 0.075 108.6);
-  --t-maxwidth: 75rem;
-  --bs-font-sans-serif: "Lexend", "Manrope", "Inter", sans-serif;
-  --bs-font-serif: "Lora", "DM Serif Display", "Spectral", serif;
-}
-
-/*  Base  */
-*, *::before, *::after { box-sizing: border-box; }
-
-/* HERO SECTION */
+/* Hero section */
 .hero-outer {
   background-color: var(--t-color-base-300);
   padding: 3.5rem 2rem 4.5rem;
   position: relative;
 }
 
+/* Diagonal connector shape below hero */
 .hero-outer::after {
   content: '';
   display: block;
@@ -236,6 +185,7 @@ header.scrolled .navbar {
   box-shadow: 0 4px 24px rgba(0,0,0,0.07);
 }
 
+/* Floating group name badge */
 .hero-badge {
   position: absolute;
   top: -1.4rem;
@@ -284,6 +234,7 @@ header.scrolled .navbar {
   margin-top: 0.75rem;
 }
 
+/* Group photo */
 .hero-photo {
   width: 165px;
   flex-shrink: 0;
@@ -300,7 +251,7 @@ header.scrolled .navbar {
   display: block;
 }
 
-/* FEATURED GAMES / CAROUSEL */
+/* Featured games section */
 .featured-section {
   max-width: calc(var(--t-maxwidth) + 4rem);
   margin: 5rem auto 0;
@@ -363,6 +314,7 @@ header.scrolled .navbar {
   opacity: 0.7;
 }
 
+/* Game cards grid */
 .carousel-track {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -435,6 +387,7 @@ header.scrolled .navbar {
   color: var(--t-color-base-content);
 }
 
+/* Carousel prev/next controls */
 .carousel-controls {
   display: flex;
   justify-content: center;
@@ -464,6 +417,7 @@ header.scrolled .navbar {
   color: var(--t-color-light);
 }
 
+/* Carousel page dots */
 .carousel-dots {
   display: flex;
   gap: 0.4rem;
@@ -485,7 +439,7 @@ header.scrolled .navbar {
   border-color: var(--t-color-primary);
 }
 
-/* FOOTER */
+/* Footer */
 footer {
   background-color: var(--t-color-dark);
   color: var(--t-color-light);
@@ -527,6 +481,36 @@ footer {
   color: var(--t-color-secondary);
 }
 
+/* Social icon links */
+.footer-socials {
+  display: flex;
+  gap: 0.625rem;
+  margin-top: 1rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1.5px solid oklch(35% 0.04 123.72);
+  color: oklch(70% 0.01 123.72);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.footer-social-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.footer-social-link:hover {
+  border-color: var(--t-color-secondary);
+  color: var(--t-color-secondary);
+  background-color: oklch(25% 0.04 123.72);
+}
+
 .footer-credits {
   border-top: 1px solid oklch(30% 0.04 123.72);
   margin-top: 2.5rem;
@@ -542,6 +526,7 @@ footer {
   padding-right: 2rem;
 }
 
+/* Responsive breakpoints */
 @media (max-width: 900px) {
   .carousel-track { grid-template-columns: repeat(2, 1fr); }
 }
@@ -559,7 +544,7 @@ footer {
   .hero-photo { width: 100%; aspect-ratio: 16/9; }
 }
 
-/* Animation and Shits */
+/* Page load animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
