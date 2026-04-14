@@ -205,10 +205,15 @@
   --t-depth: 0;
   --t-noise: 0;
 
+  --t-padding: 1rem;
+  --t-padding-lg: clamp(1rem, 2vw, 2rem);
+  
+  --t-page-heading: clamp(1.75rem, 4vw, 2.5rem);
+  --t-page-subheading: clamp(1.25rem, 3vw, 1.75rem);
+
   --bs-font-sans-serif: "Lexend", "Manrope", "Inter", sans-serif !important;
   --bs-font-serif: "Lora", "DM Serif", "Spectral", serif !important;
   --bs-font-monospace: 'Courier New', Courier, monospace !important;
-
   
   --t-color-primary-rgb: 0, 105, 255;
   --t-color-light: var(--t-color-base-100);
