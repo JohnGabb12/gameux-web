@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -899,72 +899,213 @@
         border: none;
       }
 
-      .back-to-top {
-        position: fixed;
-        right: 1.25rem;
-        bottom: 1.25rem;
-        width: 3.5rem;
-        height: 3.5rem;
-        border: 0;
-        border-radius: var(--t-radius-selector);
-        background-color: transparent;
-        padding: 0;
-        display: grid;
-        place-items: center;
-        z-index: 1001;
-        opacity: 0;
-        transform: translateY(0.5rem) scale(0.96);
-        pointer-events: none;
-        transition:
-          opacity 0.2s ease,
-          transform 0.2s ease;
-        cursor: pointer;
+      /* YouTube Ban Fallback Styling */
+      .video-fallback-message {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--t-color-base-200);
+        border-radius: var(--t-radius-field);
+        padding: 2em;
+        z-index: 10;
+        backdrop-filter: blur(4px);
       }
 
-      .back-to-top.is-visible {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
+      .fallback-content {
+        text-align: center;
+        max-width: 90%;
       }
 
-      .back-to-top .btn-bg {
-        fill: var(--t-color-base-100);
-        stroke: var(--t-color-base-300);
-        stroke-width: 1.5;
+      .fallback-icon {
+        width: 3.5em;
+        height: 3.5em;
+        color: var(--t-color-accent);
+        margin: 0 auto 1em;
+        stroke: var(--t-color-accent);
       }
 
-      .back-to-top .btn-progress-track {
-        fill: none;
-        stroke: var(--t-color-base-300);
-        stroke-width: 3;
-        opacity: 0.35;
+      .fallback-content h4 {
+        font-weight: 700;
+        font-size: 1.5em;
+        color: var(--t-color-dark);
+        margin-bottom: 0.5em;
       }
 
-      .back-to-top .btn-progress {
-        fill: none;
-        stroke: var(--t-color-primary);
-        stroke-width: 3;
-        stroke-linecap: round;
-        transform: rotate(-90deg);
-        transform-origin: 28px 28px;
-        transition: stroke-dashoffset 0.1s linear;
+      .fallback-content p {
+        color: var(--t-color-dark);
+        font-size: 0.95em;
+        margin-bottom: 1.5em;
+        text-indent: 0;
       }
 
-      .back-to-top .btn-icon {
-        fill: none;
-        stroke: var(--t-color-primary);
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+
+
+
+
+
+
+
+
+
+
+
+
+      .fallback-hint {
+        color: var(--t-color-dark);
+        font-size: 0.85em;
+        margin: 0;
       }
 
-      .back-to-top:hover .btn-bg {
-        fill: var(--t-color-base-200);
-      }
+
+
+
+
+
 
       .hidden {
         display: none !important;
       }
+    
+        /* GAME PAGE NAVIGATION START */
+        .game-page-navigation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1em;
+            margin: 2.5em auto 3em;
+            width: min(100%, 64rem);
+            padding: 0 1rem;
+        }
+
+        .game-page-navigation .page-nav-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35em;
+            min-width: 10rem;
+            width: 100%;
+            position: relative;
+
+            & a {
+                width: 100%;
+            }
+        }
+
+        .game-page-navigation .page-nav-item.next {
+            align-items: flex-end;
+
+            & a {
+                text-align: right;
+            }
+        }
+
+        .game-page-navigation .btn {
+            min-width: 10rem;
+            border-radius: var(--t-radius-field);
+            font-weight: 600;
+            padding: 0.6em 1.1em;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background-color: transparent !important;
+            transition: color 0.28s ease;
+        }
+
+        .game-page-navigation .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: -1;
+        }
+
+        .game-page-navigation .btn-prev {
+            --btn-fill: var(--t-color-secondary);
+            --btn-text-hover: var(--t-color-secondary-content);
+            color: var(--t-color-secondary) !important;
+            border-color: var(--t-color-secondary) !important;
+        }
+
+        .game-page-navigation .btn-prev::before {
+            background-color: var(--btn-fill);
+            transform-origin: left center;
+        }
+
+        .game-page-navigation .btn-next {
+            --btn-fill: var(--t-color-primary);
+            --btn-text-hover: var(--t-color-primary-content);
+            color: var(--t-color-primary) !important;
+            border-color: var(--t-color-primary) !important;
+        }
+
+        .game-page-navigation .btn-next::before {
+            background-color: var(--btn-fill);
+            transform-origin: right center;
+        }
+
+        .game-page-navigation .btn:hover,
+        .game-page-navigation .btn:focus-visible {
+            color: var(--btn-text-hover) !important;
+        }
+
+        .game-page-navigation .btn:hover::before,
+        .game-page-navigation .btn:focus-visible::before {
+            transform: scaleX(1);
+        }
+
+        .game-page-navigation .subtext {
+            display: block;
+            font-size: 0.78em;
+            color: inherit;
+            line-height: 1.2;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .game-page-navigation .btn-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45em;
+            line-height: 1.15;
+        }
+
+        .game-page-navigation .page-nav-item.next .btn-label {
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .game-page-navigation .nav-arrow {
+            width: 1em;
+            height: 1em;
+            flex-shrink: 0;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (width < 48rem) {
+            .game-page-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .game-page-navigation .page-nav-item,
+            .game-page-navigation .page-nav-item.next {
+                align-items: stretch;
+            }
+
+            .game-page-navigation .btn,
+            .game-page-navigation .btn-prev,
+            .game-page-navigation .btn-next {
+                width: 100%;
+                margin: 0;
+            }
+        }
+        /* GAME PAGE NAVIGATION END */
     </style>
 
     <title id="title">Omori - GameUX</title>
@@ -987,7 +1128,7 @@
                             <a class="nav-link" href="../../../index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../gameList.html">Game List</a>
+                            <a class="nav-link active" href="../gameList.html">Game List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../about.html">About</a>
@@ -1001,19 +1142,20 @@
         </nav>
     </header>
 
-        <nav class="breadcrumb-nav" aria-label="breadcrumb">
+        <nav class="breadcrumb-nav">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="../gameList.html">Game List</a>
             </li>
-            <li class="breadcrumb-item active game-name" aria-current="page">Omori</li>
+            <li class="breadcrumb-item active game-name">Omori</li>
         </ol>
     </nav>
 
     <main>
       <article class="wide">
         <section class="header-section">
-          <img class="game-poster-content game-poster-background-style" />
+          
+                <span class="archive-number">[ 090_omori_palanas ]</span>
           <h1 class="game-name game-name-header">Omori</h1>
           <div class="game-header">
             <span class="game-header-cont">
@@ -1070,6 +1212,19 @@
                 allowfullscreen
                 hidden
               ></iframe>
+              <div class="video-fallback-message" id="video-fallback" hidden>
+                <div class="fallback-content">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" class="fallback-icon">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <h4>YouTube is Blocked on Your Network</h4>
+                  <p>It appears YouTube is not accessible in your current network environment.</p>
+                  <p class="fallback-hint">Try connecting through a different network or VPN to access YouTube content.</p>
+                </div>
+              </div>
             </div>
 
             <div class="game-rating">
@@ -1177,14 +1332,12 @@
             class="game-info-nav-arrow right"
             id="game-info-nav-right"
             type="button"
-            aria-label="Scroll sections right"
             hidden=""
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              aria-hidden="true"
               width="20"
               height="20"
             >
@@ -1203,7 +1356,6 @@
           <section
             class="game-sections is-active"
             id="short-description"
-            aria-hidden="false"
           >
             <h2>Overview</h2>
             <ul class="list-style">
@@ -1257,7 +1409,7 @@
             </ul>
           </section>
 
-          <section class="game-sections" id="ui-components" aria-hidden="true">
+          <section class="game-sections" id="ui-components">
             <h2>UI Components</h2>
             <div class="major-components">
               <div class="major-component">
@@ -1272,7 +1424,7 @@
                       alt="Hand-drawn Menu Interface"
                     />
                   </a>
-                  <figcaption>FIG 1.1: The Coping Mechanism</figcaption>
+                  <figcaption>FIG 90.1: The Coping Mechanism</figcaption>
                 </figure>
                 <div>
                   <span class="count">[ ELEMENT_01 ]</span>
@@ -1304,7 +1456,7 @@
                       alt="Party Portraits showing emotions"
                     />
                   </a>
-                  <figcaption>FIG 1.2: Affective State Feedback</figcaption>
+                  <figcaption>FIG 90.2: Affective State Feedback</figcaption>
                 </figure>
                 <div>
                   <span class="count">[ ELEMENT_02 ]</span>
@@ -1331,7 +1483,7 @@
                       alt="Restricted Combat Options"
                     />
                   </a>
-                  <figcaption>FIG 1.3: Interface Restriction</figcaption>
+                  <figcaption>FIG 90.3: Interface Restriction</figcaption>
                 </figure>
                 <div>
                   <span class="count">[ ELEMENT_03 ]</span>
@@ -1381,7 +1533,7 @@
                       alt="Emotional Rock Paper Scissors"
                     />
                   </a>
-                  <figcaption>FIG 1.4: Universal Emotional Mapping</figcaption>
+                  <figcaption>FIG 90.4: Universal Emotional Mapping</figcaption>
                 </figure>
               </div>
             </div>
@@ -1430,7 +1582,6 @@
           <section
             class="game-sections"
             id="user-interaction"
-            aria-hidden="true"
           >
             <h2>User Interaction</h2>
             <p>
@@ -1493,7 +1644,7 @@
                       alt="UI Glitching"
                     />
                   </a>
-                  <figcaption>FIG 1.5: UI Deterioration</figcaption>
+                  <figcaption>FIG 90.5: UI Deterioration</figcaption>
                 </figure>
               </div>
             </div>
@@ -1585,7 +1736,7 @@
             </ul>
           </section>
 
-          <section class="game-sections" id="hci-principles" aria-hidden="true">
+          <section class="game-sections" id="hci-principles">
             <h2>HCI Principles</h2>
             <div class="cybernetic-feedback-loops">
               <h3>The Dual Reality Interface</h3>
@@ -1698,7 +1849,6 @@
           <section
             class="game-sections"
             id="ui-ux-weaknesses"
-            aria-hidden="true"
           >
             <h2>Strengths and Weaknesses Analysis</h2>
             <p>
@@ -1724,7 +1874,7 @@
                 <tr>
                   <td>
                     <div class="sw-item-head">
-                      <span class="sw-icon" aria-hidden="true">
+                      <span class="sw-icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -1756,7 +1906,7 @@
                   </td>
                   <td>
                     <div class="sw-item-head">
-                      <span class="sw-icon" aria-hidden="true">
+                      <span class="sw-icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -1785,7 +1935,7 @@
                 <tr>
                   <td>
                     <div class="sw-item-head">
-                      <span class="sw-icon" aria-hidden="true">
+                      <span class="sw-icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -1812,7 +1962,7 @@
                   </td>
                   <td>
                     <div class="sw-item-head">
-                      <span class="sw-icon" aria-hidden="true">
+                      <span class="sw-icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -1854,29 +2004,66 @@
           </section>
         </div>
       </article>
+    
+        <!-- GAME PAGE NAVIGATION START -->
+        <div class="game-page-navigation">
+            <div class="page-nav-item prev">
+                <a class="btn btn-outline-secondary btn-prev" href="dispatch.html">
+                    <span class="btn-label">
+                        <svg class="nav-arrow" viewBox="0 0 24 24" focusable="false">
+                            <path d="M15 18l-6-6 6-6"></path>
+                        </svg>
+                        <span>Previous Game</span>
+                    </span>
+                    <span class="subtext">Dispatch</span>
+                </a>
+            </div>
+            <div class="page-nav-item next">
+                <a class="btn btn-primary btn-next" href="raft.html">
+                    <span class="btn-label">
+                        <span>Next Game</span>
+                        <svg class="nav-arrow" viewBox="0 0 24 24" focusable="false">
+                            <path d="M9 6l6 6-6 6"></path>
+                        </svg>
+                    </span>
+                    <span class="subtext">Raft</span>
+                </a>
+            </div>
+        </div>
+        <!-- GAME PAGE NAVIGATION END -->
     </main>
 
             <footer>
         <h6>GameUX Atlas</h6>
+        <ul class="quick-links">
+            <li><a href="../../../index.html">Game List</a></li>
+            <li><a href="../../../index.html">About</a></li>
+            <li><a href="../../../index.html">Contact</a></li>
+        </ul>
         <ul class="socials">
             <li>
-                <a href="https://www.facebook.com/profile.php?id=61575774944293" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/profile.php?id=61575774944293" class="social-link" target="_blank"
+                    rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898v-2.89h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                        <path
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898v-2.89h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="https://www.instagram.com/gameux_atlas/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/gameux_atlas/" class="social-link" target="_blank"
+                    rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="https://x.com/GameUX_Atlas?s=20" class="social-link" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/GameUX_Atlas?s=20" class="social-link" target="_blank" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                 </a>
             </li>
@@ -1892,14 +2079,12 @@
       class="back-to-top"
       id="back-to-top"
       type="button"
-      aria-label="Back to top"
       title="Back to top"
     >
       <svg
         viewBox="0 0 56 56"
         width="56"
         height="56"
-        aria-hidden="true"
         focusable="false"
       >
         <circle class="btn-bg" cx="28" cy="28" r="27"></circle>
@@ -1923,7 +2108,7 @@
     const DATERELEASED = "12/25/2020";
     const PUBLISHER = "OMOCAT, LLC";
     const BADGE = "Indie / RPG";
-    const POSTERURL = "../../../public/posters/omori_poster.jpg";
+    const POSTERURL = "../../../public/posters/omori.jpg";
     const POSTERALTTEXT = "Omori Poster";
     const VIDEOURL = "../../../public/videos/omori_trailer.mp4";
     const VIDEOURLYT = "https://www.youtube.com/embed/placeholderID"; // Example Trailer ID
@@ -2071,8 +2256,7 @@
       for (let section of gameSections) {
         let isActive = section.id === sectionId;
         section.classList.toggle("is-active", isActive);
-        section.setAttribute("aria-hidden", String(!isActive));
-      }
+}
     }
 
     function getSectionIdFromHash() {
@@ -2200,6 +2384,22 @@
     window.addEventListener("scroll", updateBackToTop, { passive: true });
     window.addEventListener("resize", updateBackToTop);
     updateBackToTop();
-  </script>
+  
+    // YouTube fallback handling
+    const videoFallback = document.getElementById("video-fallback");
+
+
+
+
+
+    // Handle YouTube connectivity issues
+    if (ytEl && YTVID && videoFallback) {
+        fetch("https://www.youtube.com/favicon.ico", { mode: "no-cors", cache: "no-store" })
+            .catch(() => {
+                videoFallback.hidden = false;
+                ytEl.hidden = true;
+            });
+    }
+</script>
 </html>
 
